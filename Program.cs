@@ -1,20 +1,43 @@
 ﻿using HomeTask4_Classes.Classes;
 using HomeTask4_Classes.Enums;
 using System;
+using System.Xml.Linq;
 
 //init age
 int age = 0;
-
-//init genderType
-
 
 //call method to calc age from user birth year
 CalcAge();
 
 User user1 = new User(age);
-user1.Gender = GetUserGenderType();
-Console.WriteLine(user1.Gender);
 
+user1.Gender = GetUserGenderType();
+user1.FirstName= GetUserFirstAndLastName("First Name");
+user1.LastName= GetUserFirstAndLastName("Last Name");
+
+//Show all user data
+Console.ForegroundColor = ConsoleColor.Green;
+Console.WriteLine();
+Console.WriteLine(user1.ToString());
+Console.ResetColor();
+
+
+
+#region Method to get User FirstName And LastName, parameter NameType will show in console
+string GetUserFirstAndLastName(string nameType) {
+    string input = string.Empty;
+    while (true)
+    {
+        Console.Write($"\nPlease enter your {nameType}:");
+        input = Console.ReadLine();
+        if (!string.IsNullOrEmpty(input) && input.All(char.IsLetter))
+        {
+            break;
+        }
+    }
+    return input;
+}
+#endregion
 #region Method to get Gender enum type
 GenderType GetUserGenderType()
 {
