@@ -7,7 +7,7 @@ using System.Xml.Linq;
 int age = 0;
 
 //call method to calc age from user birth year
-CalcAge();
+SetAge();
 
 User user1 = new User(age);
 
@@ -57,19 +57,19 @@ GenderType GetUserGenderType()
 }
 #endregion
 #region Methods to get birth date and calculate user age
-void CalcAge()
+void SetAge()
 {
     try
     {
-        GetAge();
+        CalcAge();
     }
     catch
     {
         Console.Write("\n!!! Please enter only digits !!!\n");
-        CalcAge();
+        SetAge();
     }
 }
-void GetAge()
+void CalcAge()
 {
     while (age <= 0 || age > 100)
     {
